@@ -15,12 +15,16 @@ export const StyledContainer = styled("div")<any>`
 
   @media only screen and (max-width: 768px) {
     max-width: calc(100% - 38px);
-    padding: 0 18px;
+    padding: 0;
+    h3,
+    p {
+      padding: 0 10px;
+    }
   }
 
   @media only screen and (max-width: 414px) {
     max-width: 100%;
-    padding: 0 18px;
+    padding: 0;
   }
 `;
 
@@ -629,6 +633,15 @@ export const Root = styled("div")`
 export const Hero = styled("div")`
   text-align: center;
   margin: 80px 0 80px;
+  @media screen and (max-width: 768px) {
+    div h3,
+    div p {
+      font-size: 14px;
+    }
+    div button {
+      padding: 1rem;
+    }
+  }
 `;
 export const MintCount = styled("h3")`
   font-family: "Poppins", sans-serif;
@@ -637,6 +650,9 @@ export const MintCount = styled("h3")`
   margin-bottom: 20px;
   margin-top: 25px;
   font-weight: 700;
+  @media screen and (max-width: 767px) {
+    font-size: 16px;
+  }
 `;
 export const Heading = styled("h1")`
   font-family: "Poppins", sans-serif;

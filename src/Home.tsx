@@ -39,6 +39,13 @@ const Header = styled.div`
   display: flex;
   justify-content: flex-end;
   align-items: center;
+  @media screen and (max-width: 768px) {
+    flex-direction: column;
+    img {
+      margin: auto !important;
+      padding-top: 2rem;
+    }
+  }
 `;
 const WalletContainer = styled.div`
   display: flex;
@@ -57,6 +64,9 @@ const WalletContainer = styled.div`
   }
   .wallet-adapter-dropdown-list {
     grid-row-gap: 5px;
+  }
+  @media screen and (max-width: 768px) {
+    margin: 20px auto;
   }
 `;
 
@@ -330,7 +340,7 @@ const Home = (props: HomeProps) => {
                 </Link> */}
               </Heading>
 
-              <p>Some Content</p>
+              {/* <p>Some Content</p> */}
 
               {guardStates.isStarted && (
                 <MintCount>
