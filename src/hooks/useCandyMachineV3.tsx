@@ -18,7 +18,7 @@ import {
 import { useConnection, useWallet } from "@solana/wallet-adapter-react";
 
 import { TOKEN_PROGRAM_ID } from "@solana/spl-token";
-import React from "react";
+import React, { useEffect } from "react";
 import { MerkleTree } from "merkletreejs";
 import {
   AllowLists,
@@ -79,6 +79,10 @@ export default function useCandyMachineV3(
     () => connection && Metaplex.make(connection),
     [connection]
   );
+
+  useEffect(() => {
+    console.log({ candyMachine });
+  });
 
   const proofMemo = React.useMemo(() => {
     if (!candyMachineOpts.allowLists?.length) {

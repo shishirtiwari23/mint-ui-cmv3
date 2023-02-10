@@ -32,7 +32,7 @@ export const MintButton = ({
   isActive,
   isSoldOut,
   limitReached,
-  gatekeeperNetwork
+  gatekeeperNetwork,
 }: {
   onMint: (quantityString: number) => Promise<void>;
   candyMachine: CandyMachine | undefined;
@@ -74,7 +74,14 @@ export const MintButton = ({
 
   return (
     <CTAButton
-      disabled={loading || isSoldOut || isMinting || isEnded || !isActive || limitReached}
+      disabled={
+        loading ||
+        isSoldOut ||
+        isMinting ||
+        isEnded ||
+        !isActive ||
+        limitReached
+      }
       onClick={async () => {
         if (isActive && gatekeeperNetwork) {
           if (gatewayStatus === GatewayStatus.ACTIVE) {

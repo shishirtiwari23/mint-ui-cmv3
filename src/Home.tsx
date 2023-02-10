@@ -280,18 +280,18 @@ const Home = (props: HomeProps) => {
     <main>
       <>
         <Header>
-          {/* <Link href='/'>
+          <Link href="https://cafeyoda.com/">
             <img
               style={{
-                filter: 'invert(1)',
-                maxWidth: '200px',
+                marginRight: "auto",
+                maxWidth: "200px",
                 marginLeft: 30,
                 marginTop: 10,
               }}
-              src='/logo.png'
-              alt='logo'
+              src="/logo.png"
+              alt="logo"
             />
-          </Link> */}
+          </Link>
           <WalletContainer>
             <Wallet>
               {wallet ? (
@@ -306,19 +306,19 @@ const Home = (props: HomeProps) => {
           </WalletContainer>
         </Header>
         <Root>
-          <div className="cloud-content">
+          {/* <div className="cloud-content">
             {[...Array(7)].map((cloud, index) => (
               <div key={index} className={`cloud-${index + 1} cloud-block`}>
                 <div className="cloud"></div>
               </div>
             ))}
-          </div>
+          </div> */}
           <StyledContainer>
             {/* <MintNavigation /> */}
 
             <Hero>
               <Heading>
-                <Link href="/">
+                {/* <Link href="/">
                   <img
                     style={{
                       filter: "invert(1)",
@@ -327,13 +327,10 @@ const Home = (props: HomeProps) => {
                     src="/logo.png"
                     alt="logo"
                   />
-                </Link>
+                </Link> */}
               </Heading>
 
-              <p>
-                6942 Rejected f00kers here to f00k shit up. 3 mints max per
-                wallet. Free. f00k f00k Mother f00kers.
-              </p>
+              <p>Some Content</p>
 
               {guardStates.isStarted && (
                 <MintCount>
@@ -362,9 +359,9 @@ const Home = (props: HomeProps) => {
                 />
               ) : !wallet?.publicKey ? (
                 <ConnectButton>Connect Wallet</ConnectButton>
-              // ) : !guardStates.canPayFor ? (
+              ) : // ) : !guardStates.canPayFor ? (
               //   <h1>You cannot pay for the mint</h1>
-              ) : !guardStates.isWalletWhitelisted ? (
+              !guardStates.isWalletWhitelisted ? (
                 <h1>Mint is private.</h1>
               ) : (
                 <>
@@ -409,7 +406,7 @@ const Home = (props: HomeProps) => {
                 {[...Array(21)].map((item, index) => (
                   <img
                     key={index}
-                    src={`/nfts/${index + 1}.jpeg`}
+                    src={`/nfts/${index + 1}.png`}
                     height="200px"
                     width="200px"
                     alt=""
@@ -424,7 +421,7 @@ const Home = (props: HomeProps) => {
                 {[...Array(21)].map((item, index) => (
                   <img
                     key={index}
-                    src={`/nfts/${index + 1}.jpeg`}
+                    src={`/nfts/${index + 1}.png`}
                     height="200px"
                     width="200px"
                     alt=""

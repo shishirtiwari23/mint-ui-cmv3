@@ -6,7 +6,11 @@ import styled from "styled-components";
 import { useConnection, useWallet } from "@solana/wallet-adapter-react";
 import { PublicKey } from "@solana/web3.js";
 import { GatewayStatus, useGateway } from "@civic/solana-gateway-react";
-import { GuardGroupStates, ParsedPricesForUI, PaymentRequired } from "./hooks/types";
+import {
+  GuardGroupStates,
+  ParsedPricesForUI,
+  PaymentRequired,
+} from "./hooks/types";
 
 export const CTAButton = styled(Button)`
   display: inline-block !important;
@@ -15,7 +19,7 @@ export const CTAButton = styled(Button)`
   color: #000 !important;
   min-width: 258px !important;
   font-size: 1em !important;
-  font-family: "Patrick Hand", cursive;
+  font-family: "Poppins", sans-serif;
   font-weight: bold !important;
 `;
 
@@ -31,7 +35,7 @@ export const Minus = styled.button`
   border: 0;
   border-radius: 5px;
   box-sizing: border-box;
-  font-family: "Patrick Hand", cursive;
+  font-family: "Poppins", sans-serif;
   vertical-align: middle;
   transition: all linear 0.3s;
 
@@ -61,7 +65,7 @@ export const NumericField = styled.input`
   box-shadow: 0px 3px 5px -1px rgb(0 0 0 / 20%),
     0px 6px 10px 0px rgb(0 0 0 / 14%), 0px 1px 18px 0px rgb(0 0 0 / 12%);
   box-sizing: border-box;
-  font-family: "Patrick Hand", cursive;
+  font-family: "Poppins", sans-serif;
   font-weight: 500;
   line-height: 1px;
   border: none;
@@ -235,6 +239,20 @@ export const MultiMintButton = ({
       mintCount > limit,
     [loading, isSoldOut, isMinting, isEnded, !isActive]
   );
+
+  useEffect(() => {
+    console.log({
+      disabled,
+      mintCount,
+      limit,
+      isSoldOut,
+      isMinting,
+      isEnded,
+      isActive,
+      loading,
+      gatekeeperNetwork,
+    });
+  });
   return (
     <div>
       <div>
@@ -284,18 +302,20 @@ export const MultiMintButton = ({
         >
           {!candyMachine ? (
             "CONNECTING..."
+          ) : isEnded ? (
+            "ENDED"
           ) : isSoldOut ? (
             "SOLD OUT"
-          ) : isActive ? guardStates.messages.length ? (guardStates.messages[0]) : (
-            mintCount > limit ? (
+          ) : isActive ? (
+            guardStates.messages.length ? (
+              guardStates.messages[0]
+            ) : mintCount > limit ? (
               "LIMIT REACHED"
             ) : isMinting || loading ? (
               <CircularProgress />
             ) : (
               "MINT"
             )
-          ) : isEnded ? (
-            "ENDED"
           ) : (
             "UNAVAILABLE"
           )}
@@ -307,9 +327,9 @@ export const MultiMintButton = ({
           {totalTokenCostsString}
         </h3>
       )}
-        {guardStates.messages?.map((m, i) => (
-          <p key={i}>{m}</p>
-        ))}
+      {guardStates.messages?.map((m, i) => (
+        <p key={i}>{m}</p>
+      ))}
     </div>
   );
 };
